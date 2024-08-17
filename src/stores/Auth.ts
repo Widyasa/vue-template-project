@@ -14,7 +14,6 @@ export const useAuthStore = defineStore('useAuthStore', {
             console.log(loginData)
             try {
                 const {data}:Auth = await axios.post(apiUrl + 'login', loginData)
-                console.log(data)
                 this.loginOutput = data
                 this.isLoggedIn = true
             } catch (e) {

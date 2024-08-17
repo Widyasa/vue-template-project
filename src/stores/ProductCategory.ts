@@ -32,5 +32,28 @@ export const useProductCategoryStore = defineStore('useProductCategoryStore', {
                 console.error(e)
             }
         },
+        async updateProductCategory(request:any, id:number) {
+            console.log(request)
+            try {
+                const response = await axios.put(apiUrl + `product/categories/${id}`, request)
+                console.log(response)
+                if (response.status === 200) {
+                    await this.getProductCategory()
+                }
+            } catch (e) {
+                console.error(e)
+            }
+        },
+        async deleteProductCategory(id:number) {
+            try {
+                const response = await axios.delete(apiUrl + `product/categories/${id}`)
+                console.log(response)
+                if (response.status === 200) {
+                    await this.getProductCategory()
+                }
+            } catch (e) {
+                console.error(e)
+            }
+        },
     }
 })
